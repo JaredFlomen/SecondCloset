@@ -5,14 +5,13 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-import customerAPricing from './helpers';
-
 app.post('/api', (req, res) => {
   const { fee, customer, items } = req.body;
   if (customer === 'A') {
-    customerAPricing(fee, items).then(response =>
-      res.send(JSON.stringify(response))
-    );
+    const basePrice = items.length * fee;
+    const discount = basePrice * 0.1;
+    const finalPrice = basePrice - discount;
+    res.send(JSON.stringify(finalPrice));
   } else if (customer === 'B') {
     const basePrice = items.length * fee;
     let volumeAccumulator = 0;
