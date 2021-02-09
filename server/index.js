@@ -12,16 +12,8 @@ app.post('/api', (req, res) => {
     const price = helpers.customerAPrice(fee, items);
     res.send(JSON.stringify(price));
   } else if (customer === 'B') {
-    const basePrice = items.length * fee;
-    let volumeAccumulator = 0;
-    for (const item of items) {
-      volumeAccumulator +=
-        parseInt(item['length']) *
-        parseInt(item['height']) *
-        parseInt(item['width']);
-    }
-    const finalPrice = basePrice + volumeAccumulator;
-    res.send(JSON.stringify(finalPrice));
+    const price = helpers.customerBPrice(fee, items);
+    res.send(JSON.stringify(price));
   } else if (customer === 'C') {
     const basePrice = items.length * fee;
     let valueAccumulator = 0;

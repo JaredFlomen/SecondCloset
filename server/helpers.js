@@ -5,4 +5,17 @@ const customerAPrice = (fee, items) => {
   return finalPrice;
 };
 
-module.exports = { customerAPrice };
+const customerBPrice = (fee, items) => {
+  const basePrice = items.length * fee;
+  let volumeAccumulator = 0;
+  for (const item of items) {
+    volumeAccumulator +=
+      parseInt(item['length']) *
+      parseInt(item['height']) *
+      parseInt(item['width']);
+  }
+  const finalPrice = basePrice + volumeAccumulator;
+  return finalPrice;
+};
+
+module.exports = { customerAPrice, customerBPrice };
