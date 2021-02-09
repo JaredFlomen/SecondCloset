@@ -1,5 +1,6 @@
 const request = require('supertest');
-const app = require('../server/index');
+const express = require('express');
+const app = express();
 
 describe('Sample test', () => {
   it('Should test that true === true', () => {
@@ -8,7 +9,7 @@ describe('Sample test', () => {
 });
 
 describe('Post Endpoints', () => {
-  it('should create a new post', () => {
+  it('Post /api', () => {
     const res = request(app)
       .post('/api')
       .send({
@@ -32,8 +33,7 @@ describe('Post Endpoints', () => {
             value: '500',
           },
         ],
-      });
-    // expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual(36);
+      })
+      .expect('Content-Type', /json/);
   });
 });
