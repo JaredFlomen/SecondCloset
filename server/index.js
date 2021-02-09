@@ -15,46 +15,25 @@ app.post('/api', (req, res) => {
     const price = helpers.customerBPrice(fee, items);
     res.send(JSON.stringify(price));
   } else if (customer === 'C') {
-    const basePrice = items.length * fee;
-    let valueAccumulator = 0;
-    for (const item of items) {
-      valueAccumulator += parseInt(item['value']);
-    }
-    const valueSurchage = valueAccumulator * 0.05;
-    const finalPrice = basePrice + valueSurchage;
-    res.send(JSON.stringify(finalPrice));
+    const price = helpers.customerCPrice(fee, items);
+    res.send(JSON.stringify(price));
   } else if (customer === 'D') {
-    const basePrice = items.length * fee;
-    let volumeAccumulator = 0;
-    for (const item of items) {
-      volumeAccumulator +=
-        parseInt(item['length']) *
-        parseInt(item['height']) *
-        parseInt(item['width']);
-    }
-    const finalVolumeAccumulator = volumeAccumulator * 2;
+    const grossCharge = helpers.customerDVolume(fee, items);
     if (items.length <= 100) {
-      const preDiscount = finalVolumeAccumulator + basePrice;
-      const discount = preDiscount * 0.05;
-      const finalPrice = preDiscount - discount;
+      const discount = grossCharge * 0.05;
+      const finalPrice = grossCharge - discount;
       res.send(JSON.stringify(finalPrice));
     } else if (items.length <= 200) {
       const firstDiscount = fee * 100 * 0.05;
       const secondDiscount = items.length - 100 * fee * 0.1;
-      const finalPrice =
-        basePrice + finalVolumeAccumulator - firstDiscount - secondDiscount;
+      const finalPrice = grossCharge - firstDiscount - secondDiscount;
       res.send(JSON.stringify(finalPrice));
     } else {
       const firstDiscount = fee * 100 * 0.05;
       const secondDiscount = fee * 100 * 0.1;
-      const remainingItems = items.length - 200;
-      const thirdDiscount = remainingItems * fee * 0.15;
+      const thirdDiscount = items.length - 200 * fee * 0.15;
       const finalPrice =
-        basePrice -
-        firstDiscount -
-        secondDiscount -
-        thirdDiscount +
-        finalVolumeAccumulator;
+        grossCharge - firstDiscount - secondDiscount - thirdDiscount;
       res.send(JSON.stringify(finalPrice));
     }
   } else {
