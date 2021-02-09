@@ -39,3 +39,5 @@
 8. Your quote will be displayed in the body of the response.
 
 ## Captures
+
+[Screenshot](https://github.com/JaredFlomen/SecondCloset/blob/main/docs/SendingRequest.png?raw=true)
