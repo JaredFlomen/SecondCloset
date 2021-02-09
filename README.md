@@ -35,5 +35,7 @@
         }
     ]
 }
-7. Optional - I downlaoded Postman's desktop agent (can be found in the bottom right footer)
-8. Your quote will be displayed in the body of the response
+7. Optional - I downlaoded Postman's desktop agent as the requests were not being delivered (can be found in the bottom right footer)
+8. Your quote will be displayed in the body of the response.
+
+## Captures
