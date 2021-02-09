@@ -42,16 +42,29 @@ app.post('/api', (req, res) => {
         parseInt(item['width']);
     }
     const finalVolumeAccumulator = volumeAccumulator * 2;
-    let itemAccumulator = 0;
     if (items.length <= 100) {
       const preDiscount = finalVolumeAccumulator + basePrice;
       const discount = preDiscount * 0.05;
       const finalPrice = preDiscount - discount;
       res.send(JSON.stringify(finalPrice));
     } else if (items.length <= 200) {
-      ///
+      const firstDiscount = fee * 100 * 0.05;
+      const secondDiscount = items.length - 100 * fee * 0.1;
+      const finalPrice =
+        basePrice + finalVolumeAccumulator - firstDiscount - secondDiscount;
+      res.send(JSON.stringify(finalPrice));
     } else {
-      ///
+      const firstDiscount = fee * 100 * 0.05;
+      const secondDiscount = fee * 100 * 0.1;
+      const remainingItems = items.length - 200;
+      const thirdDiscount = remainingItems * fee * 0.15;
+      const finalPrice =
+        basePrice -
+        firstDiscount -
+        secondDiscount -
+        thirdDiscount +
+        finalVolumeAccumulator;
+      res.send(JSON.stringify(finalPrice));
     }
   } else {
     res.send(JSON.stringify('Not a valid customer'));
