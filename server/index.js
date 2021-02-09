@@ -16,10 +16,45 @@ app.post('/api', (req, res) => {
     const basePrice = items.length * fee;
     let volumeAccumulator = 0;
     for (const item of items) {
-      volumeAccumulator += item['length'] * item['height'] * item['width'];
+      volumeAccumulator +=
+        parseInt(item['length']) *
+        parseInt(item['height']) *
+        parseInt(item['width']);
     }
-    const finalprice = basePrice + volumeAccumulator;
-    res.send(JSON.stringify(finalprice));
+    const finalPrice = basePrice + volumeAccumulator;
+    res.send(JSON.stringify(finalPrice));
+  } else if (customer === 'C') {
+    const basePrice = items.length * fee;
+    let valueAccumulator = 0;
+    for (const item of items) {
+      valueAccumulator += parseInt(item['value']);
+    }
+    const valueSurchage = valueAccumulator * 0.05;
+    const finalPrice = basePrice + valueSurchage;
+    res.send(JSON.stringify(finalPrice));
+  } else if (customer === 'D') {
+    const basePrice = items.length * fee;
+    let volumeAccumulator = 0;
+    for (const item of items) {
+      volumeAccumulator +=
+        parseInt(item['length']) *
+        parseInt(item['height']) *
+        parseInt(item['width']);
+    }
+    const finalVolumeAccumulator = volumeAccumulator * 2;
+    let itemAccumulator = 0;
+    if (items.length <= 100) {
+      const preDiscount = finalVolumeAccumulator + basePrice;
+      const discount = preDiscount * 0.05;
+      const finalPrice = preDiscount - discount;
+      res.send(JSON.stringify(finalPrice));
+    } else if (items.length <= 200) {
+      ///
+    } else {
+      ///
+    }
+  } else {
+    res.send(JSON.stringify('Not a valid customer'));
   }
 });
 
