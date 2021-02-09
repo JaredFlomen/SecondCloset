@@ -4,14 +4,13 @@ const PORT = process.env.PORT || 3001;
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
+const helpers = require('./helpers');
 
 app.post('/api', (req, res) => {
   const { fee, customer, items } = req.body;
   if (customer === 'A') {
-    const basePrice = items.length * fee;
-    const discount = basePrice * 0.1;
-    const finalPrice = basePrice - discount;
-    res.send(JSON.stringify(finalPrice));
+    const price = helpers.customerAPrice(fee, items);
+    res.send(JSON.stringify(price));
   } else if (customer === 'B') {
     const basePrice = items.length * fee;
     let volumeAccumulator = 0;
