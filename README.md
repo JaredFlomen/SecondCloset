@@ -1,2 +1,2 @@
-# SecondCloset
+# SecondCloset Takehome Assignment - Jared Flomen
  
