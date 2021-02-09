@@ -6,11 +6,11 @@
 2. Install dependencies using the `npm install` command.
 3. Start the API server using the `npm start` command.
 
-## Sending information 
+## Sending Information 
 
 1. Create an account on [Postman](https://www.postman.com/) to simulate the POST request
 2. On the top left under Workspaces, click New Workspace, name it however you'd like. 
-3. In the top left, under home you should see your team's name. Directly to the right, click 'NEW', then click 'Request'. Create a name under 'Request Name'. Scroll down and click +Create Collection, name it and click the plus to the right. Then click 'Save'
+3. In the top left, under home you should see your team's name. Directly to the right, click 'New', then click 'Request'. Create a name under 'Request Name'. Scroll down and click '+Create Collection', name it and click the plus to the right. Then click 'Save'
 4. Change the request type to POST (to the left of the blue Send button)
 5. Change the settings to body, select raw (round buttons) and change the dropdown to JSON from text
 6. Enter the following code to test the API:
@@ -37,6 +37,12 @@
 }
 7. Optional - I downlaoded Postman's desktop agent as the requests were not being delivered (can be found in the bottom right footer)
 8. Your quote will be displayed in the body of the response.
+
+## Customization
+
+* The user can change the fee in the request
+* The user can add more items to the items object
+* The user can switch between customers A, B, C or D
 
 ## Captures
 
