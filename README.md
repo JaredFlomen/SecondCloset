@@ -40,4 +40,4 @@
 
 ## Captures
 
-[Screenshot](https://github.com/JaredFlomen/SecondCloset/blob/main/docs/SendingRequest.png?raw=true)
+![Screenshot](https://github.com/JaredFlomen/SecondCloset/blob/main/docs/SendingRequest.png?raw=true)
