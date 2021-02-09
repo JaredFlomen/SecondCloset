@@ -7,7 +7,12 @@ app.use(bodyParser.json());
 
 app.post('/api', (req, res) => {
   const { fee, customer, items } = req.body;
-  res.status(200).send('Received');
+  if (customer === 'A') {
+    const basePrice = items.length * fee;
+    const discount = basePrice * 0.1;
+    const finalPrice = basePrice - discount;
+    res.send(JSON.stringify(finalPrice));
+  }
 });
 
 app.listen(PORT, () => {
