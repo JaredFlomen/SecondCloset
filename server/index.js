@@ -12,6 +12,14 @@ app.post('/api', (req, res) => {
     const discount = basePrice * 0.1;
     const finalPrice = basePrice - discount;
     res.send(JSON.stringify(finalPrice));
+  } else if (customer === 'B') {
+    const basePrice = items.length * fee;
+    let volumeAccumulator = 0;
+    for (const item of items) {
+      volumeAccumulator += item['length'] * item['height'] * item['width'];
+    }
+    const finalprice = basePrice + volumeAccumulator;
+    res.send(JSON.stringify(finalprice));
   }
 });
 
