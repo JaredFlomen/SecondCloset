@@ -7,8 +7,6 @@ app.use(bodyParser.json());
 
 app.post('/api', (req, res) => {
   const { fee, customer, items } = req.body;
-  console.log('User fee: ', fee);
-  console.log('Customer: ', customer);
   res.status(200).send('Received');
 });
 
