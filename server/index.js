@@ -8,6 +8,7 @@ const helpers = require('./helpers');
 app.post('/api', (req, res) => {
   const { fee, customer, items } = req.body;
   if (parseInt(fee) <= 0) res.send(JSON.stringify('Price must be positive'));
+  if (!items.length) res.send(JSON.stringify('Items object must have content'));
   if (customer === 'A') {
     const price = helpers.customerAPrice(fee, items);
     res.send(JSON.stringify(price));
