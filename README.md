@@ -37,7 +37,7 @@
     ]
 }
 8. Optional - I downlaoded Postman's desktop agent as the requests were not being delivered (can be found in the bottom right footer)
-9. Your quote will be displayed in the body of the response.
+9. Your quote will be displayed in the body of the response. Check the console if it doesn't open automatically.
 
 ## Customization
 
