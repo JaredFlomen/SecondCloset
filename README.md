@@ -41,9 +41,9 @@
 
 ## Customization
 
-* The user can change the fee in the request
+* The user can change the fee in the body of the request
 * The user can add more items to the items object
-* The user can switch between customers A, B, C or D
+* The user can change between customers A, B, C or D
 
 ## Captures
 
